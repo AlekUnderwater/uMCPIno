@@ -1,5 +1,19 @@
 # uMCPIno
-uMCP Ino - a lightweight byte-oriented point-to-point protocol with handshake, integrity control, guaranteed packets ordering and delivery.
+uMCP Ino -  is a free view on old (but stil good!) DEC's [DDCMP protocol](https://en.wikipedia.org/wiki/Digital_Data_Communications_Message_Protocol).
+* a lightweight (only 6 extra bytes for data packets and 4 bytes for control packets)
+* byte-oriented
+* point-to-point
+* with handshake
+* with [Nagle's algorithm](https://en.wikipedia.org/wiki/Nagle%27s_algorithm)
+* pipelining
+* integrity control
+* guaranteed packets ordering
+* and guaranteed delivery
+
+In the Arduino-compatible implementation, there are some limitation due to memory size:
+* the packet size is limited to 64 bytes
+* the number of sent and unacknowledged packets is limited to 8
+* the number of packets to be send in pipelining mode is limited to 4
 
 # Message framing:
 
@@ -27,9 +41,18 @@ Offset, bytes|Item|Size, bits|
 endif
 ```
 
-There are two types of nodes in the protocol: Selected by default (Master) and unselected by default (tributary).
-All control messages transfer the SELECT flag. Node can transmitt only if has SELECT flag set to true.
-If master node has transfered the SELECT flag and it has not returned back, the node will regain it by timeout.
+There are two types of nodes in the protocol: 
+* Selected by default (Master node)
+* And unselected by default (tributary node)
+
+A node can only send data messages when its SELECT flag is set to true
+
+The main differences between Master and Tributary nodes are: 
+* a master node has SELECT flag is set to true by default
+* a tributary node should return the SELECT flag as soon as it transmits all the data to be transmitted
+* if for some reason a master node didn't receive the SELECT flag, it regains it by timeout
+
+All control messages transfer the SELECT flag.
 
 
 # How to test?
