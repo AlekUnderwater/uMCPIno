@@ -30,3 +30,21 @@ endif
 There are two types of nodes in the protocol: Selected by default (Master) and unselected by default (tributary).
 All control messages transfer the SELECT flag. Node can transmitt only if has SELECT flag set to true.
 If master node has transfered the SELECT flag and it has not returned back, the node will regain it by timeout.
+
+
+# How to test?
+
+- Program your Arduino board with [uMCPInoNode sketch](https://github.com/AlekUnderwater/uMCPIno/blob/master/Arduino/uMCPInoNode.ino)
+- Connect your Arduino board with your PC via USB-UART converter
+- On your PC, run the [uMCPIno Test application](https://github.com/AlekUnderwater/uMCPIno/tree/master/CSharp/uMCPIno_Test)
+- Open Port monitor in Arduino IDE
+- Connect the uMCPIno test application to the USB-UART converter port
+- Now, to establish uMCPIno connection you can reset your Arduino board or press "START" button in the application.
+
+Here some screenshots:
+
+1. uMCPIno autostart on board power-on:
+https://github.com/AlekUnderwater/uMCPIno/blob/master/Docs/Screenshots/autostart_on_poweron.png
+
+2. Example of handling with temporary dead line:
+https://github.com/AlekUnderwater/uMCPIno/blob/master/Docs/Screenshots/line_dead.png
