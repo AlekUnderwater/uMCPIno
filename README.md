@@ -48,3 +48,31 @@ Here some screenshots:
 
 ## Example of handling with temporary dead line:
 ![](https://github.com/AlekUnderwater/uMCPIno/blob/master/Docs/Screenshots/line_dead.png)
+
+# How to use?
+
+* if you want to use a standalone Arduino board as a uMCP-converter, when you put some data to it, and want it
+to be safely transferred to another uMCP Node, use [uMCPIno.ino sketch](https://github.com/AlekUnderwater/uMCPIno/blob/master/Arduino/uMCPIno.ino). It suppose to use 2 serial ports - one to send and receive data bytes, and another to use as uMCP line (it can be Bluetooth, RF, or even underwater acoustic link).
+* if you want to embed the uMCPIno protocol to your project, you can use the [uMCPInoNode.ino sketch](https://github.com/AlekUnderwater/uMCPIno/blob/master/Arduino/uMCPInoNode.ino). In this case you should change the sketch's code:
+    1) To send data over uMCPIno link use the function:  
+    ```bool uMCPIno_SendData(byte* dataToSend, byte dataSize);```
+    where:  
+    ```dataToSend``` - a byte buffer to send  
+    ```dataSize``` - size of the buffer  
+    2) Before sending data, check if there is enough space in tx buffer:  
+    ```bool uMCP_IsCanSend(byte dataSize);```  
+    where:  
+    ```dataSize``` - number of bytes to send  
+    
+    3) To analyse the received data:    
+    The received over uMCP link data is stored in a ring buffer ```il_ring```.   
+    The amount of received bytes is stored in ```il_Cnt```  
+    The read pointer is in ```il_rPos```.  
+    To perform the analysis of the received data, put your code in function:   
+    ```void USER_uMCPIno_DataPacketReceived();```  
+    It fires when new data packet has been received from a remote node over uMCP line  
+
+    4) If you need to be informed, when the tx buffer is empty, put your code in function:           
+    ```void USER_uMCP_OnTxBufferEmptry();```   
+    it fires when all sent messages has been acknowlegded by the remote node
+
