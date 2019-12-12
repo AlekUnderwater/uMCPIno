@@ -3,6 +3,7 @@ uMCP Ino - a lightweight byte-oriented point-to-point protocol with handshake, i
 
 # Message framing:
 
+## Control Header
 Offset, bytes|Item|Size, bits|   
 -------------|----|----------|
 0|SIGN = 0xAD|8|constant, packet start signature  
@@ -11,9 +12,10 @@ Offset, bytes|Item|Size, bits|
 2|RCNT|4|number of last received packet  
 3|HCHK|8|header checksum  
 
-'''
+```
 if PTYPE == uMCP_PTYPE_DTA || PTYPE == uMCP_PTYPE_DTE
-'''
+```
+## Data block
 
 Offset, bytes|Item|Size, bits|
 -------------|----|----------|
@@ -21,9 +23,9 @@ Offset, bytes|Item|Size, bits|
 ..|DATA|8 * DCNT|data  
 5 + DCNT|DCHK|8|packet checksum  
 
-'''
+```
 endif
-'''
+```
 
 There are two types of nodes in the protocol: Selected by default (Master) and unselected by default (tributary).
 All control messages transfer the SELECT flag. Node can transmitt only if has SELECT flag set to true.
