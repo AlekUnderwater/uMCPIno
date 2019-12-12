@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace uMCPIno
@@ -24,11 +24,13 @@ namespace uMCPIno
                 if (value != state)
                 {
                     state = value;
-                    if (state == uMCPInoState.ISTART)
+                    if ((state == uMCPInoState.ISTART) ||
+                        (state == uMCPInoState.HALTED))
                     {
                         R = 0;
                         N = 0;                        
                         A = 0;
+                        sentDataBlocks.Clear();
                     }
 
                     OnSTATEChangedEventHandler.Rise(this, new EventArgs());
