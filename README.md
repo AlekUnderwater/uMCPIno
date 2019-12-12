@@ -44,7 +44,7 @@ If master node has transfered the SELECT flag and it has not returned back, the 
 Here some screenshots:
 
 1. uMCPIno autostart on board power-on:
-https://github.com/AlekUnderwater/uMCPIno/blob/master/Docs/Screenshots/autostart_on_poweron.png
+![](https://github.com/AlekUnderwater/uMCPIno/blob/master/Docs/Screenshots/autostart_on_poweron.png)
 
 2. Example of handling with temporary dead line:
-https://github.com/AlekUnderwater/uMCPIno/blob/master/Docs/Screenshots/line_dead.png
+![](https://github.com/AlekUnderwater/uMCPIno/blob/master/Docs/Screenshots/line_dead.png)
