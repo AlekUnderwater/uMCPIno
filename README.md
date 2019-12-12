@@ -36,7 +36,7 @@ If master node has transfered the SELECT flag and it has not returned back, the 
 
 - Program your Arduino board with [uMCPInoNode sketch](https://github.com/AlekUnderwater/uMCPIno/blob/master/Arduino/uMCPInoNode.ino)
 - Connect your Arduino board with your PC via USB-UART converter
-- On your PC, run the [uMCPIno Test application](https://github.com/AlekUnderwater/uMCPIno/tree/master/CSharp/uMCPIno_Test)
+- On your PC, run the [uMCPIno Test application](https://github.com/AlekUnderwater/uMCPIno/releases/download/1.0/uMCPIno_.zip)
 - Open Port monitor in Arduino IDE
 - Connect the uMCPIno test application to the USB-UART converter port
 - Now, to establish uMCPIno connection you can reset your Arduino board or press "START" button in the application.
