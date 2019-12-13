@@ -1,5 +1,5 @@
 # uMCPIno
-uMCP Ino -  is a free view on old (but stil good!) DEC's [DDCMP protocol](https://en.wikipedia.org/wiki/Digital_Data_Communications_Message_Protocol).
+uMCP Ino -  is a free view on old (but still good!) DEC's [DDCMP protocol](https://en.wikipedia.org/wiki/Digital_Data_Communications_Message_Protocol).
 * a lightweight (only 6 extra bytes for data packets and 4 bytes for control packets)
 * byte-oriented
 * point-to-point
@@ -50,7 +50,7 @@ A node can only send data messages when its SELECT flag is set to true
 The main differences between Master and Tributary nodes are: 
 * a master node has SELECT flag is set to true by default
 * a tributary node should return the SELECT flag as soon as it transmits all the data to be transmitted
-* if for some reason a master node didn't receive the SELECT flag, it regains it by timeout
+* if for some reason a master node doesn't receive the SELECT flag, it regains it by timeout
 
 All control messages transfer the SELECT flag.
 
